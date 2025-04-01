@@ -16,7 +16,6 @@ contract NFTTest is Test {
         nft.mintTo(address(1));
     }
 
-
     function test_MintPricePaid() public {
         nft.mintTo{value: 0.05 ether}(address(1));
     }
