@@ -5,7 +5,10 @@ pragma solidity ^0.8.10;
 //import "@openzeppelin/security/ReentrancyGuard.sol";
 //import "@openzeppelin/token/ERC20/ERC20.sol";
 //import "@openzeppelin/access/Ownable.sol";
+import "../../../lib/openzeppelin-contracts/contracts/utils/Address.sol";
+import "./MyToken.sol";
 import "openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol";
+
 contract LenderPool is ReentrancyGuard {
     using Address for address;
 
@@ -24,7 +27,7 @@ contract LenderPool is ReentrancyGuard {
         bytes calldata data
     ) external nonReentrant returns (bool) {
         uint256 balanceBefore = token.balanceOf(address(this));
-        bool ret = token.transfer(borrower, amount);
+        bool _ret = token.transfer(borrower, amount);
 
         // it's dangerous
         target.functionCall(data);
