@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
+import "./ReentryNormalOne.sol";
+
 /**
 *普通重入攻击
 */
@@ -9,7 +11,7 @@ contract AttackNormalOne {
     uint256 public constant AMOUNT = 1 ether;
 
     constructor(address _etherStoreAddress) {
-        etherStore = new ReentryNormalOne(_etherStoreAddress);
+        etherStore = ReentryNormalOne(_etherStoreAddress);
     }
 
     /**
