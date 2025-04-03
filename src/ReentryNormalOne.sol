@@ -2,9 +2,9 @@
 pragma solidity ^0.8.10;
 
 /**
-* 会导致重入攻击
+* 普通重入攻击
 */
-contract ReentryVulnerableOne {
+contract ReentryNormalOne {
     mapping(address => uint256) public balances;
 
     function deposit() public payable {

