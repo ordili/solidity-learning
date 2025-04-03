@@ -23,7 +23,7 @@ contract LenderPool is ReentrancyGuard {
         bytes calldata data
     ) external nonReentrant returns (bool) {
         uint256 balanceBefore = token.balanceOf(address(this));
-        bool _ret = token.transfer(borrower, amount);
+        token.transfer(borrower, amount);
 
         // it's dangerous
         target.functionCall(data);
