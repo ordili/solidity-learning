@@ -14,7 +14,7 @@ contract FindThisHash {
     constructor() payable {}
 
     /// @notice 会受到Front Running 攻击；
-    /// @param solution
+    /// @param solution solution
     function solve(string memory solution) public {
         require(
             hash == keccak256(abi.encodePacked(solution)), "Incorrect answer"
