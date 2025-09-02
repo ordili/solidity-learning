@@ -12,7 +12,7 @@ contract SelfDestructAttackTest is Test {
     function setUp() public {
         initSender();
         etherGame = new EtherGame();
-        attack = new Attack(address(etherGame));
+        attack = new Attack{value: 10}(address(etherGame));
     }
 
     function initSender() internal {
@@ -48,10 +48,13 @@ contract SelfDestructAttackTest is Test {
 
         assertEq(4, address(etherGame).balance);
 
+        console.log("attack before balance is ", address(attack).balance);
         attack.attack{value: 8 wei}();
-
+        console.log("attack after balance is ", address(attack).balance);
+        assertEq(0, address(attack).balance);
         assertTrue(address(etherGame).balance > etherGame.TARGET_AMOUNT(), "attack failed.");
 
+        assertEq(address(attack.etherGame()), address(etherGame));
         vm.stopPrank();
     }
 }
