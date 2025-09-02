@@ -3,8 +3,9 @@ pragma solidity ^0.8.10;
 
 contract EtherStore {
     mapping(address => uint256) public balances;
-    constructor(){
-    }
+
+    constructor() {}
+
     function deposit() external payable {
         balances[msg.sender] += msg.value;
     }
@@ -19,9 +20,9 @@ contract EtherStore {
 }
 
 contract Attack {
-
     EtherStore public etherStore;
-    constructor(address etherStoreAddress){
+
+    constructor(address etherStoreAddress) {
         etherStore = EtherStore(etherStoreAddress);
     }
 

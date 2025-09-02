@@ -12,7 +12,6 @@ contract EnglishAuctionTest is Test {
         initSender();
         vm.prank(sender);
         englishAuction = new EnglishAuction(180);
-
     }
 
     function initSender() internal {
@@ -43,11 +42,9 @@ contract EnglishAuctionTest is Test {
         assertEq(address(englishAuction).balance, amount);
         assertEq(englishAuction.currentPrice(), amount);
         assertEq(englishAuction.currentBidder(), anotherSender);
-
     }
 
     function testWithdraw() public {
-
         uint256 amount = 100 wei;
         vm.prank(sender);
         console.log("sender balance is ", sender.balance);
