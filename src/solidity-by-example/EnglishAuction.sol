@@ -7,6 +7,7 @@ contract EnglishAuction {
     event Withdraw(address indexed bidder, uint256 amount);
     event Bid(address indexed sender, uint256 amount);
 
+    uint256 public currentPrice;
     address public currentBidder;
     address public owner;
     uint256 public startTime;
@@ -22,8 +23,12 @@ contract EnglishAuction {
     function bid() external payable {
         require(block.timestamp >= startTime, "not started.");
         require(block.timestamp < endTime, "auction ended.");
-        require(msg.value > address(this).balance, "auction price is too low.");
+        require(msg.value >= currentPrice, "auction price is too low.");
+
+        payable(currentBidder).transfer(currentPrice);
+
         currentBidder = msg.sender;
+        currentPrice = msg.value;
     }
 
     function withdraw() external {
