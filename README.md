@@ -1,1 +1,1 @@
-Welcome to solidity example.
+Welcome to solidity example
