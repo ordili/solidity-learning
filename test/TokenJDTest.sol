@@ -6,17 +6,16 @@ import {Test} from "forge-std/Test.sol";
 import {Token} from "../src/vulnerable/Token.sol";
 
 contract TokenJDTest is Test {
-
     event Transfer(address indexed from, address indexed to, uint256 value);
 
     TokenJD public tokenJD;
     address public sender;
+
     constructor() {
         sender = makeAddr("user");
         vm.deal(sender, 10 ether);
         vm.prank(sender);
         tokenJD = new TokenJD();
-
     }
 
     function testTransferEvent() public {
