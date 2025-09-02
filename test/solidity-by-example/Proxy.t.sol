@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import "../src/learning/Proxy.sol";
+import "solidity-by-example/Proxy.sol";
 
 contract ProxyTest is Test {
     LogicContract public logicContract;

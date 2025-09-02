@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIK
 pragma solidity ^0.8.13;
 
-import "../src/learning/Create2.sol";
+import "solidity-by-example/Create2.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 contract Create2Test is Test {

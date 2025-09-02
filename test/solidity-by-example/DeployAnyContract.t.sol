@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import "../src/learning/DeployAnyContract.sol";
+import "solidity-by-example/DeployAnyContract.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 contract DeployAnyContractTest is Test {

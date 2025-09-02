@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "../src/learning/Inheritance.sol";
+import "solidity-by-example/Inheritance.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 contract InheritanceTest is Test {

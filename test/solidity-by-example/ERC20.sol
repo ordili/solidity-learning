@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import {Test} from "../lib/forge-std/src/Test.sol";
-import "../src/learning/ERC20.sol";
+import {Test} from "forge-std/Test.sol";
+import "solidity-by-example/ERC20.sol";
 
 contract ERC20Test is Test {
     ERC20 public erc20;
