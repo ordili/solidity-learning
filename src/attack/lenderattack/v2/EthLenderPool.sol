@@ -30,15 +30,16 @@ contract EthLenderPool {
     }
 
     /**
-    *风险点：只判断了还款后 EthLenderPool 合约余额的大小，但这个余额可能包含用户存在合约中的资产，
-    *对于这部分资产，用户是可以随时提走的。如下是攻击者合约，这里使用了 attack 函数发起闪电贷，
-    *并顺利提走了资金，它是怎么做到的？在回调函数 execute 中，攻击者将闪电贷借来的资金又存到了资金池中，
-    *从而保证资金池中的资金并没有减少，但现在资金却被记录成了攻击者的！
-    */
+     * 风险点：只判断了还款后 EthLenderPool 合约余额的大小，但这个余额可能包含用户存在合约中的资产，
+     * 对于这部分资产，用户是可以随时提走的。如下是攻击者合约，这里使用了 attack 函数发起闪电贷，
+     * 并顺利提走了资金，它是怎么做到的？在回调函数 execute 中，攻击者将闪电贷借来的资金又存到了资金池中，
+     * 从而保证资金池中的资金并没有减少，但现在资金却被记录成了攻击者的！
+     */
     function flashLoan(uint256 amount) external {
         uint256 balanceBefore = address(this).balance;
         IFlashLoanEtherReceiver(msg.sender).execute{value: amount}();
-        if (address(this).balance < balanceBefore)
+        if (address(this).balance < balanceBefore) {
             revert RepayFailed();
+        }
     }
 }

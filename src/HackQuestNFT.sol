@@ -27,13 +27,9 @@ contract HackQuestNFT is ERC721, ERC721URIStorage, Ownable {
     mapping(bytes => bool) public _signatures;
     mapping(uint256 => CourseProgress) public _courseProgress;
 
-    constructor(address signer)
-        ERC721("HackQuest", "HQ")
-        Ownable(msg.sender)
-    {
+    constructor(address signer) ERC721("HackQuest", "HQ") Ownable(msg.sender) {
         _signer = signer;
     }
-
 
     function safeMint() public {
         uint256 tokenId = _nextTokenId++;
@@ -55,7 +51,10 @@ contract HackQuestNFT is ERC721, ERC721URIStorage, Ownable {
         require(from == msg.sender, "Invalid TokenId");
 
         // verify course progress
-        require(_courseProgress[tokenId] == CourseProgress.INIT || _courseProgress[tokenId] == CourseProgress.PROGRESS_HALF, "Course Progress Error");
+        require(
+            _courseProgress[tokenId] == CourseProgress.INIT || _courseProgress[tokenId] == CourseProgress.PROGRESS_HALF,
+            "Course Progress Error"
+        );
 
         if (progress == uint8(CourseProgress.PROGRESS_HALF)) {
             _courseProgress[tokenId] = CourseProgress.PROGRESS_HALF;
@@ -66,11 +65,10 @@ contract HackQuestNFT is ERC721, ERC721URIStorage, Ownable {
         }
     }
 
-    
-    function getMessageHash(address _account, uint256 _tokenId, uint8 _progress) public pure returns(bytes32) {
+    function getMessageHash(address _account, uint256 _tokenId, uint8 _progress) public pure returns (bytes32) {
         return keccak256(abi.encodePacked(_account, _tokenId, _progress));
     }
-    
+
     function toEthSignedMessageHash(bytes32 hash) internal pure returns (bytes32) {
         // 32 is the length in bytes of hash,
         // enforced by the type signature above
@@ -83,21 +81,11 @@ contract HackQuestNFT is ERC721, ERC721URIStorage, Ownable {
     }
 
     // The following functions are overrides required by Solidity.
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
+    function tokenURI(uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (bool)
-    {
+    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721URIStorage) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }

@@ -6,7 +6,7 @@ import "./ReentryCrossFunctionTwo.sol";
 contract AttackCrossFunctionTwo {
     ReentryCrossFunctionTwo public target;
     address public constant hacker_addr = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
-    uint amount;
+    uint256 amount;
 
     constructor(address _target) {
         target = ReentryCrossFunctionTwo(_target);

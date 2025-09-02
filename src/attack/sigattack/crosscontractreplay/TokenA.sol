@@ -32,24 +32,18 @@ contract TokenA {
         _transfer(to, value);
     }
 
-    function transferProxy(
-        address _from,
-        address _to,
-        uint256 _value,
-        uint256 _feeUgt,
-        bytes memory signature
-    ) public returns (bool) {
-        bytes32 h = keccak256(
-            abi.encodePacked(_from, _to, _value, _feeUgt, _useNonce(_from))
-        );
+    function transferProxy(address _from, address _to, uint256 _value, uint256 _feeUgt, bytes memory signature)
+        public
+        returns (bool)
+    {
+        bytes32 h = keccak256(abi.encodePacked(_from, _to, _value, _feeUgt, _useNonce(_from)));
 
         bool check_result = _checkSig(signature, h, _from);
         require(check_result, "signature is not right");
 
-        if (
-            balanceOf[_to] + _value < balanceOf[_to] ||
-            balanceOf[msg.sender] + _feeUgt < balanceOf[msg.sender]
-        ) revert();
+        if (balanceOf[_to] + _value < balanceOf[_to] || balanceOf[msg.sender] + _feeUgt < balanceOf[msg.sender]) {
+            revert();
+        }
         balanceOf[_to] += _value;
 
         balanceOf[msg.sender] += _feeUgt;
@@ -58,22 +52,15 @@ contract TokenA {
         return true;
     }
 
-    function getTxHash(
-        address _from,
-        address _to,
-        uint256 _value,
-        uint256 _feeUgt,
-        uint256 _nonce
-    ) public pure returns (bytes32)
+    function getTxHash(address _from, address _to, uint256 _value, uint256 _feeUgt, uint256 _nonce)
+        public
+        pure
+        returns (bytes32)
     {
         return keccak256(abi.encodePacked(_from, _to, _value, _feeUgt, _nonce));
     }
 
-    function _checkSig(bytes memory signature, bytes32 _txHash, address from)
-    private
-    pure
-    returns (bool)
-    {
+    function _checkSig(bytes memory signature, bytes32 _txHash, address from) private pure returns (bool) {
         bytes32 ethSignedHash = toEthSignedMessageHash(_txHash);
         address signer = ethSignedHash.recover(signature);
         bool valid = signer == from;

@@ -25,15 +25,3 @@ contract NFTTest is Test {
         nft.mintTo{value: 0.05 ether}(address(0));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,8 +2,8 @@
 pragma solidity ^0.8.10;
 
 /**
-* 普通重入攻击
-*/
+ * 普通重入攻击
+ */
 contract ReentryNormalOne {
     mapping(address => uint256) public balances;
 
@@ -12,8 +12,8 @@ contract ReentryNormalOne {
     }
 
     /**
-    * 会导致重入攻击
-    */
+     * 会导致重入攻击
+     */
     function withdraw() public {
         uint256 bal = balances[msg.sender];
         require(bal > 0);

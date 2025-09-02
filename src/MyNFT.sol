@@ -7,14 +7,12 @@ contract MyNFT {
         string description;
         address owner;
     }
+
     mapping(uint256 => Token) private tokens;
     mapping(address => uint256[]) private ownerTokens;
     uint256 private nextTokenId = 1;
 
-    function mint(
-        string memory _name,
-        string memory _description
-    ) public returns (uint256) {
+    function mint(string memory _name, string memory _description) public returns (uint256) {
         Token memory newNFT = Token(_name, _description, msg.sender);
         uint256 tokenId = nextTokenId;
         tokens[tokenId] = newNFT;
@@ -23,9 +21,7 @@ contract MyNFT {
         return nextTokenId - 1;
     }
 
-    function getNFT(
-        uint256 _tokenId
-    )
+    function getNFT(uint256 _tokenId)
         public
         view
         returns (string memory name, string memory description, address owner)
@@ -38,9 +34,7 @@ contract MyNFT {
         return (token.name, token.description, token.owner);
     }
 
-    function getTokensByOwner(
-        address _owner
-    ) public view returns (uint256[] memory) {
+    function getTokensByOwner(address _owner) public view returns (uint256[] memory) {
         return ownerTokens[_owner];
     }
 

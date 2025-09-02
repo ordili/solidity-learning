@@ -2,9 +2,7 @@
 pragma solidity ^0.8.10;
 
 contract Safe {
-    constructor(){
-
-    }
+    constructor() {}
     receive() external payable {}
 
     function withdraw() external {

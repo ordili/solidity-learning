@@ -5,8 +5,9 @@ import "./LendingPool.sol";
 import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract SimpleReceiver is IFlashLoanReceiver{
+contract SimpleReceiver is IFlashLoanReceiver {
     using SafeERC20 for IERC20;
+
     IERC20 public myToken;
     LendingPool public lendingPool;
 
@@ -15,21 +16,14 @@ contract SimpleReceiver is IFlashLoanReceiver{
         myToken = IERC20(_asset);
     }
 
-    function flashLoan(
-        uint256 amounts,
-        address receiverAddress,
-        bytes calldata data
-    ) external {
+    function flashLoan(uint256 amounts, address receiverAddress, bytes calldata data) external {
         receiverAddress = address(this);
         lendingPool.flashLoan(amounts, receiverAddress, data);
     }
 
-    function executeOperation(
-        uint256 amounts,
-        address receiverAddress,
-        address _initiator,
-        bytes calldata data
-    ) external {
+    function executeOperation(uint256 amounts, address receiverAddress, address _initiator, bytes calldata data)
+        external
+    {
         // the business logic ...
 
         // transfer all borrowed assets back to the lending pool
