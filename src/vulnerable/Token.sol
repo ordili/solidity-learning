@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.20;
 
 /**
  * 我们的目标是触发下溢。假设我们当前有 20 个代币，我们只需要转账一个比 20 大的数量，比如 21。
