@@ -6,3 +6,4 @@ halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/
 openzeppelin-contracts/=lib/openzeppelin-contracts/
 solmate/=lib/solmate/src/
 solidity-by-example=src/solidity-by-example
+chainlink/=lib/chainlink/
