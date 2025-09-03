@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "../src/vulnerable/Shop.sol";
-import {ShopAttack} from "../src/attack/ShopAttack.sol";
+import {ShopAttack} from "../src/ethernaut/ShopAttack.sol";
 import {Test} from "../lib/forge-std/src/Test.sol";
 
 contract ShopAttackTest is Test {
