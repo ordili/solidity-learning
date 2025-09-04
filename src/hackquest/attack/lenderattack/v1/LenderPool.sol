@@ -1,9 +1,9 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import "openzeppelin-contracts/contracts/utils/Address.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
 import "./MyToken.sol";
-import "openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 contract LenderPool is ReentrancyGuard {
     using Address for address;
