@@ -15,16 +15,10 @@ contract ReentranceTest is Test {
     }
 
     function test_attack() public {
-        vm.recordLogs();
-
         reentrance.donate{value: 10 wei}(msg.sender);
-
         address sender = makeAddr("user");
-
         vm.deal(sender, 100 wei);
-
         vm.startPrank(sender);
-
         reentrance.donate{value: 2 wei}(sender);
 
         uint256 reentranceAttackBalanceBf = address(reentranceAttack).balance;
@@ -37,31 +31,6 @@ contract ReentranceTest is Test {
         uint256 reentranceAttackBalanceAf = address(reentranceAttack).balance;
         console.log("afterAttackContractBalance is ", afterAttackContractBalance);
         console.log("reentranceAttackBalanceAf is ", reentranceAttackBalanceAf);
-
-        // 获取记录的所有日志
-        Vm.Log[] memory logs = vm.getRecordedLogs();
-
-        // 输出事件数量
-        console.log("Number of events emitted:", logs.length);
-
-        // 解析并输出每个事件
-        for (uint256 i = 0; i < logs.length; i++) {
-            console.log("=== Event", i, "===");
-            console.log("Emitter address:", logs[i].emitter);
-            console.log("Topics count:", logs[i].topics.length);
-            console.log("Data length:", logs[i].data.length);
-
-            // 检查是否是 Transfer 事件
-            bytes32 attackReceivedSig = keccak256("AttackReceived(address,uint256)");
-            if (logs[i].topics[0] == attackReceivedSig) {
-                console.log("Event type: Transfer");
-                (address from, address to, uint256 value) = abi.decode(logs[i].data, (address, address, uint256));
-                console.log("From:", from);
-                console.log("To:", to);
-                console.log("Value:", value);
-            }
-            vm.stopPrank();
-        }
     }
 
     function test_donate() public {
