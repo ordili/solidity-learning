@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import {Test} from "forge-std/Test.sol";
-import {Safe} from "../src/Safe.sol";
+import {Safe} from "../../src/Safe.sol";
 
 interface IERC20 {
     function balanceOf(address owner) external view returns (uint256);

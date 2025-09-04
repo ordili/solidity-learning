@@ -1,8 +1,8 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import "../src/ethernaut/Shop.sol";
-import {ShopAttack} from "../src/ethernaut/ShopAttack.sol";
+import {Shop} from "ethernaut/Shop.sol";
+import {ShopAttack} from "ethernaut/ShopAttack.sol";
 import {Test} from "forge-std/Test.sol";
 
 contract ShopAttackTest is Test {
