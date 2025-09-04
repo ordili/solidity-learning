@@ -15,12 +15,24 @@ contract CoinFlipTest is Test {
 
     function testAttack() public {
         assertEq(0, coinFlip.consecutiveWins());
+        uint256 count = coinFlip.consecutiveWins();
 
+        uint256 startBlock = block.number;
+        vm.roll(startBlock + 1);
         attacker.attack();
-        assertEq(0, coinFlip.consecutiveWins());
+        count += 1;
+        assertEq(count, coinFlip.consecutiveWins());
+
+        startBlock = block.number;
+        vm.roll(startBlock + 1);
         attacker.attack();
-        assertEq(1, coinFlip.consecutiveWins());
+        count += 1;
+        assertEq(count, coinFlip.consecutiveWins());
+
+        startBlock = block.number;
+        vm.roll(startBlock + 1);
         attacker.attack();
-        assertEq(2, coinFlip.consecutiveWins());
+        count += 1;
+        assertEq(count, coinFlip.consecutiveWins());
     }
 }
