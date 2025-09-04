@@ -6,3 +6,7 @@ https://solidity-by-example.org/
 ## solidyt-by-example
 Code about learning solidyt-by-example
 https://ethernaut.openzeppelin.com/
+
+## hackquest
+Code about learning hackquest
+https://www.hackquest.io/zh-cn/home
