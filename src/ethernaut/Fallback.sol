@@ -35,7 +35,6 @@ contract Fallback {
         require(msg.value > 0 && contributions[msg.sender] > 0);
         owner = msg.sender;
     }
-
     // solution
     // 1. Get new instance
     //await contract.contribute({ value: web3.utils.toWei('0.0001', 'ether') })

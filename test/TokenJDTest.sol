@@ -3,7 +3,7 @@ pragma solidity ^0.8.10;
 
 import "../src/TokenJD.sol";
 import {Test} from "forge-std/Test.sol";
-import {Token} from "../src/ethernaut/Token.sol";
+import {Token} from "ethernaut/Token.sol";
 
 contract TokenJDTest is Test {
     event Transfer(address indexed from, address indexed to, uint256 value);

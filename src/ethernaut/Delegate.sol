@@ -15,7 +15,6 @@ contract Delegate {
 
 /**
  *
- *
  *  // 使用 sendTransaction 方法
  * await sendTransaction({
  *   from: player,
@@ -24,7 +23,6 @@ contract Delegate {
  * });
  *
  * await sendTransaction({from: player,to: contract.address,  data: web3.eth.abi.encodeFunctionSignature('pwn()')});
- *
  *
  */
 contract Delegation {
