@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "../src/vulnerable/Shop.sol";
+import "../src/ethernaut/Shop.sol";
 import {ShopAttack} from "../src/ethernaut/ShopAttack.sol";
-import {Test} from "../lib/forge-std/src/Test.sol";
+import {Test} from "forge-std/Test.sol";
 
 contract ShopAttackTest is Test {
     Shop public shop;

@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import {Test} from "forge-std/Test.sol";
 import "forge-std/console2.sol";
 
-import {Counter} from "../src/vulnerable/Counter.sol";
+import {Counter} from "../src/Counter.sol";
 
 contract CodeHashTest is Test {
     Counter public counter;

@@ -2,8 +2,8 @@
 pragma solidity ^0.8.10;
 
 import {Test, console, Vm} from "forge-std/Test.sol";
-import {Reentrance} from "../src/vulnerable/Reentrance.sol";
-import {ReentranceAttack} from "../src/ethernaut/ReentranceAttack.sol";
+import {Reentrance} from "ethernaut/ReentranceAttack.sol";
+import {ReentranceAttack} from "ethernaut/ReentranceAttack.sol";
 
 contract ReentranceTest is Test {
     Reentrance public reentrance;
