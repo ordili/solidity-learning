@@ -5,6 +5,18 @@ import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 
+contract Token1 is ERC20("token1", "t1") {
+    constructor() {
+        _mint(msg.sender, 2000);
+    }
+}
+
+contract Token2 is ERC20("token2", "t2") {
+    constructor() {
+        _mint(msg.sender, 2000);
+    }
+}
+
 contract Dex is Ownable {
     address public token1;
     address public token2;
@@ -47,7 +59,7 @@ contract SwappableToken is ERC20 {
     address private _dex;
 
     constructor(address dexInstance, string memory name, string memory symbol, uint256 initialSupply)
-    ERC20(name, symbol)
+        ERC20(name, symbol)
     {
         _mint(msg.sender, initialSupply);
         _dex = dexInstance;
