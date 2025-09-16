@@ -1,0 +1,29 @@
+{
+  "name": "solidity-learning",
+  "version": "1.0.0",
+  "description": "Code about learning ethernuat.\r https://solidity-by-example.org/\r ## solidyt-by-example\r Code about learning solidyt-by-example\r https://ethernaut.openzeppelin.com/",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ordili/solidity-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ordili/solidity-learning/issues"
+  },
+  "homepage": "https://github.com/ordili/solidity-learning#readme",
+  "dependencies": {
+    "@chainlink/contracts-ccip": "^1.6.1",
+    "@openzeppelin/contracts": "^5.4.0"
+  }
+}

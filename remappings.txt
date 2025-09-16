@@ -7,4 +7,4 @@ solmate/=lib/solmate/src/
 solidity-by-example=src/solidity-by-example
 ethernaut=src/ethernaut
 hackquest=src/hackquest
-chainlink/=lib/chainlink/
+@chainlink/=node_modules/@chainlink
