@@ -18,12 +18,12 @@ contract Sender is OwnerIsCreator {
     error NotEnoughBalance(uint256 currentBalance, uint256 calculatedFees); // Used to make sure contract has enough balance.
 
     // Event emitted when a message is sent to another chain.
+    // The chain selector of the destination chain.
+    // The address of the receiver on the destination chain.
+    // The text being sent.
+    // the token address used to pay CCIP fees.
+    // The fees paid for sending the CCIP message.
     event MessageSent( // The unique ID of the CCIP message.
-        // The chain selector of the destination chain.
-        // The address of the receiver on the destination chain.
-        // The text being sent.
-        // the token address used to pay CCIP fees.
-        // The fees paid for sending the CCIP message.
         bytes32 indexed messageId,
         uint64 indexed destinationChainSelector,
         address receiver,
